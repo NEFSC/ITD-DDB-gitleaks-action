@@ -34,6 +34,7 @@ jobs:
     - name: gitleaks-action
       uses: zricethezav/gitleaks-action@master
       with:
+        append-path: security/.gitleaks.toml
         config-path: security/.gitleaks.toml
 ```
     > The `config-path` is relative to your GitHub Worskpace
