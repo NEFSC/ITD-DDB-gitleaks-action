@@ -4,12 +4,12 @@ branding:
   color: purple
   icon: eye
 inputs:
-  config-path:
-    description: 'Path to config (relative to $GITHUB_WORKSPACE)'
-    required: false
-    default: '.github/.gitleaks.toml'
   append-repo-config:
     description: 'Append the provided or default config with the repo config, Path to config (relative to $GITHUB_WORKSPACE)'
+    required: false
+    default: '.github/.gitleaks.toml'
+  config-path:
+    description: 'Path to config (relative to $GITHUB_WORKSPACE)'
     required: false
     default: '.github/.gitleaks.toml'
 outputs:
