@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: gitleaks-action
-      uses: zricethezav/gitleaks-action@master
+      uses: NEFSC/ITD-DDB-gitleaks-action@master
 ```
 
 ### Using your own .gitleaks.toml configuration
@@ -32,7 +32,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: gitleaks-action
-      uses: zricethezav/gitleaks-action@master
+      uses: NEFSC/ITD-DDB-gitleaks-action@master
       with:
         append-path: security/.gitleaks.toml
         config-path: security/.gitleaks.toml
@@ -49,7 +49,7 @@ ex:
       with:
         fetch-depth: '0'
     - name: gitleaks-action
-      uses: zricethezav/gitleaks-action@master
+      uses: NEFSC/ITD-DDB-gitleaks-action@master
 ```
 
 using a fetch-depth of '0' clones the entire history. If you want to do a more efficient clone, use '2', but that is not guaranteed to work with pull requests.   
