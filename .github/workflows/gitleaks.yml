@@ -12,5 +12,4 @@ jobs:
       - name: gitleaks-action with config
         uses: zricethezav/gitleaks-action@master
         with:
-          append-path: .gitleaks.yml
           config-path: .gitleaks.yml
