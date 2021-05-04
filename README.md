@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: gitleaks-action
+    - name: ITD-DDB-gitleaks-action
       uses: NEFSC/ITD-DDB-gitleaks-action@master
       with:
         append-repo-config: security/.gitleaks.toml
@@ -48,7 +48,7 @@ ex:
     - uses: actions/checkout@v2
       with:
         fetch-depth: '0'
-    - name: gitleaks-action
+    - name: ITD-DDB-gitleaks-action
       uses: NEFSC/ITD-DDB-gitleaks-action@master
 ```
 
