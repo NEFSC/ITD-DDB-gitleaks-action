@@ -8,7 +8,7 @@ CONFIG=""
 
 # check if a custom append config have been provided
 if [ -f "$GITHUB_WORKSPACE/$INPUT_APPEND_REPO_CONFIG" ]; then
-  APPEND=" --append-repo-config --repo-config-path=$GITHUB_WORKSPACE/$INPUT_APPEND_REPO_CONFIG"
+  APPEND=" --append-repo-config --additional-config=$GITHUB_WORKSPACE/$INPUT_APPEND_REPO_CONFIG"
 fi
 
 
