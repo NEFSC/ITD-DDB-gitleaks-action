@@ -1,25 +1,24 @@
 #!/bin/bash
 
-INPUT_APPEND_PATH="$1"
+INPUT_APPEND_REPO_CONFIG="$1"
 APPEND=""
 
 INPUT_CONFIG_PATH="$2"
 CONFIG=""
+
+# check if a custom append config have been provided
+if [ -f "$GITHUB_WORKSPACE/$INPUT_APPEND_REPO_CONFIG" ]; then
+  APPEND=" --append-repo-config=$GITHUB_WORKSPACE/$INPUT_APPEND_REPO_CONFIG"
+fi
+
 
 # check if a custom config have been provided
 if [ -f "$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH" ]; then
   CONFIG=" --config-path=$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH"
 fi
 
-# check if a custom append config have been provided
-if [ -f "$GITHUB_WORKSPACE/$INPUT_APPEND_PATH" ]; then
-  APPEND=" --append-repo-config=$GITHUB_WORKSPACE/$INPUT_APPEND_PATH"
-fi
-
-
 echo running gitleaks "$(gitleaks --version) with the following command👇"
 
-DONATE_MSG="👋 maintaining gitleaks takes a lot of work so consider sponsoring me or donating a little something\n\e[36mhttps://github.com/sponsors/zricethezav\n\e[36mhttps://www.paypal.me/zricethezav\n"
 
 if [ "$GITHUB_EVENT_NAME" = "push" ]
 then
@@ -41,12 +40,10 @@ then
   echo "$CAPTURE_OUTPUT"
   echo "::set-output name=result::$CAPTURE_OUTPUT"
   echo "----------------------------------"
-  echo -e $DONATE_MSG
   exit 1
 else
   GITLEAKS_RESULT=$(echo -e "\e[32m✅ SUCCESS! Your code is good to go!")
   echo "$GITLEAKS_RESULT"
   echo "::set-output name=exitcode::$GITLEAKS_RESULT"
   echo "------------------------------------"
-  echo -e $DONATE_MSG
 fi
