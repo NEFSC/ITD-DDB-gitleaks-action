@@ -34,7 +34,7 @@ jobs:
     - name: gitleaks-action
       uses: NEFSC/ITD-DDB-gitleaks-action@master
       with:
-        append-path: security/.gitleaks.toml
+        append-repo-config: security/.gitleaks.toml
         config-path: security/.gitleaks.toml
 ```
     > The `config-path` is relative to your GitHub Worskpace
