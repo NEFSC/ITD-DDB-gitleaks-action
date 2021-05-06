@@ -2,9 +2,12 @@
 
 INPUT_APPEND_REPO_CONFIG="$1"
 APPEND=""
+echo $INPUT_APPEND_REPO_CONFIG
 
 INPUT_CONFIG_PATH="$2"
 CONFIG=""
+
+echo $INPUT_CONFIG_PATH
 
 # check if a custom append config have been provided
 if [ -f "$GITHUB_WORKSPACE/$INPUT_APPEND_REPO_CONFIG" ]; then
