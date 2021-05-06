@@ -2,23 +2,18 @@
 
 INPUT_APPEND_REPO_CONFIG="$1"
 APPEND=""
-echo $INPUT_APPEND_REPO_CONFIG
 
 INPUT_CONFIG_PATH="$2"
 CONFIG=""
 
-echo $INPUT_CONFIG_PATH
-
 # check if a custom append config have been provided
 if [ -f "$GITHUB_WORKSPACE/$INPUT_APPEND_REPO_CONFIG" ]; then
-  echo "found file1"
   APPEND=" --append-repo-config --additional-config=$GITHUB_WORKSPACE/$INPUT_APPEND_REPO_CONFIG"
 fi
 
 
 # check if a custom config have been provided
 if [ -f "$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH" ]; then
-  echo "found file2"
   CONFIG=" --config-path=$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH"
 fi
 
@@ -28,7 +23,7 @@ echo running gitleaks "$(gitleaks --version) with the following command👇"
 if [ "$GITHUB_EVENT_NAME" = "push" ]
 then
   echo gitleaks --path=$GITHUB_WORKSPACE --verbose --redact $APPEND $CONFIG
-  CAPTURE_OUTPUT=$(gitleaks --path=$GITHUB_WORKSPACE --verbose --redact $APPEND $CONFIG)
+  CAPTURE_OUTPUT=$(gitleaks --path=$GITHUB_WORKSPACE --verbose  $APPEND $CONFIG)
 elif [ "$GITHUB_EVENT_NAME" = "pull_request" ]
 then 
   git --git-dir="$GITHUB_WORKSPACE/.git" log --left-right --cherry-pick --pretty=format:"%H" remotes/origin/$GITHUB_BASE_REF... > commit_list.txt
